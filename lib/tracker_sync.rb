@@ -5,7 +5,9 @@ class TrackerSync
 
   base_uri 'http://trackersync.localhost:4002/'
   headers 'Authorization' => 'tracker-sync-token',
-          'Content-Type' => 'application/json'
+          'Content-Type' => 'application/json',
+          'X-Frame-Options' => 'ALLOW-FROM https://customer.stage-a.space/'
+
 
   raise_on [500, 422, 406, 404, 403, 401, 400]
   format :json
@@ -21,7 +23,7 @@ class TrackerSync
 
     #right valid params
     @payload = { jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZWNyZXRfdG9rZW4iOiJxYV9zdXBlcm1hcmtldF9jbGllbnRfc2VjcmV0IiwidGVzdGlvX2FwaV90b2tlbiI6ImFlOGRiMDIwYzA5OWUyODlkODliMzIzNGI2YjkzMTUwYmYyNDgxZjcifQ.RB3ZHVkM3kD_YePmNhA480DKiBYLI_OxzqpgWMMw07w' }
-    self.class.get('/qa_supermarket/bug_trackers_configurations', body: payload.to_json )
+    self.class.get('/qa_supermarket/bug_trackers_configurations', body: payload.to_json, headers: { 'X-Frame-Options' => 'ALLOW-FROM https://customer.stage-a.space/' })
   end
 
   def get_jira_iframe

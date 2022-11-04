@@ -10,7 +10,12 @@ module QaSupermarketTest
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    # config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL' }
+    config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL', 'Access-Control-Allow-Origin' => '*' }
+    # config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOW-FROM https://trackersync.stage-a.space' }
+    Rails.application.config.hosts << "https://trackersync.stage-a.space/"
+    Rails.application.config.hosts << "https://trackersync.stage-a.space"
+    Rails.application.config.hosts << "trackersync.stage-a.space"
+    # Rails.application.config.hosts << "product.com"
     # config.hosts << "http"
     # Configuration for the application, engines, and railties goes here.
     #

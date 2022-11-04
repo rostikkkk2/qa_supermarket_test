@@ -44,6 +44,8 @@ Rails.application.configure do
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
 
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/, 'https://trackersync.stage-a.space' ]
+
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
